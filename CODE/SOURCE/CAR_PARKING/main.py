@@ -11,14 +11,8 @@ img_name4 = 'z4614410840545_45d2180cc13bd4082cf9fc783d4b311c.jpg'
 img_name5 = 'z4614410871751_35b99c2749fe0bf5eb255986d9105bf1.jpg'
 img_name6 = 'z4614409464006_ad166d3f0b2cb3b6d0768e48d6233e12.jpg'
 
-OPEN_COMMAND = 1
-CLOSE_COMMAND = 0
-
-image = cv.imread(os.path.join(path, img_name1))
-
 
 def gateIn():
-    # gate_in.send_command(ser, CLOSE_COMMAND)
     # capture = cv.VideoCapture(0)
     # isTrue, frame = capture.read()
     # gateIn = Gate(camera_frame=frame)
@@ -35,11 +29,11 @@ def gateIn():
     #         # break
     # capture.release()
     # cv.destroyAllWindows()
-
+    image = cv.imread(os.path.join(path, img_name4))
     gate_in = Gate(image_input=image)
     is_number_plate_in, cap_in_img = gate_in.plate_regconition()
     if is_number_plate_in:
-        license_text_in = get_license_plate_text(cap_in_img)
+        license_text_in = get_license_plate_text(cap_in_img).replace('\n', '')
         current_time_in = get_current_time()
         if license_text_in is not None:
             qr_path, data = generate_qrcode()
@@ -51,18 +45,26 @@ def gateIn():
 
 
 def gateOut():
+    image = cv.imread(os.path.join(path, img_name2))
     gate_out = Gate(image_input=image)
     is_number_plate_out, cap_out_img = gate_out.plate_regconition()
-    # read_data_from_csv()
     if is_number_plate_out:
         license_text_out = cleanup_text(get_license_plate_text(cap_out_img))
         current_time_out = get_current_time()
         if license_text_out is not None:
-            if check_data_is_correct(license_text_out, '4Cn2A1gfjmuD'):
+            if check_data_is_correct(license_text_out, 'GHo7FvJgLWTm'):
                 time_in = get_time_in(license_text_out)
+                remove_data(license_text_out)
+            else:
+                print('Data Wrong')
     cv.waitKey(0)
+
+
+def read_data():
+    read_data_from_csv()
 
 
 if __name__ == "__main__":
     # gateIn()
     gateOut()
+    read_data()

@@ -65,11 +65,11 @@ def get_license_plate_text(image_path):
 
 
 def get_current_time():
-    current_time = datetime.now().strftime("%H:%M")
+    current_time = datetime.now().strftime("%D %H:%M")
     return current_time
 # func: get current time
 # parameter: None
-# return values: current time (string) (h:m)
+# return values: current time (string) (day/month/year hour:minute)
 
 
 def generate_qrcode():
@@ -133,6 +133,9 @@ def get_time_in(license_plate):
                 print("time in: ", time_in)
                 f.close()
                 return time_in
+# func: get time in
+# parameter: license plate
+# return values: time in
 
 
 def get_total_time(time_in, time_out):
@@ -140,3 +143,23 @@ def get_total_time(time_in, time_out):
 # func: cal total time in - out
 # paramter: time in, time out
 # return values: total time
+
+
+def remove_data(license_plate):
+    lines = list()
+    license_plate = '-> ' + license_plate
+    print(license_plate)
+    with open(data_path, 'r') as f:
+        csvReader = csv.reader(f)
+        for row in csvReader:
+            lines.append(row)
+            if license_plate == row[0]:
+                lines.remove(row)
+        f.close()
+    with open(data_path, 'w', newline='') as f:
+        csvWriter = csv.writer(f)
+        csvWriter.writerows(lines)
+        f.close()
+# func: remove data from csv
+# parameter: data path
+# return values: None
