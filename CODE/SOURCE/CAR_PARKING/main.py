@@ -56,10 +56,10 @@ def gateOut():
     # read_data_from_csv()
     if is_number_plate_out:
         license_text_out = cleanup_text(get_license_plate_text(cap_out_img))
-        print("data gate out: ", license_text_out)
         current_time_out = get_current_time()
         if license_text_out is not None:
-            print(check_data_is_correct(license_text_out, '4Cn2A1gfjmuD'))
+            if check_data_is_correct(license_text_out, '4Cn2A1gfjmuD'):
+                time_in = get_time_in(license_text_out)
     cv.waitKey(0)
 
 

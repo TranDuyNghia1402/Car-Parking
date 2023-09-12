@@ -122,3 +122,21 @@ def check_data_is_correct(license_plate, identifier):
 # func: check if data gate in == data gate out
 # parameter: license plate, identifier
 # return values: True / False
+
+
+def get_time_in(license_plate):
+    with open(data_path, 'r') as f:
+        csvReader = csv.reader(f)
+        for row in csvReader:
+            if cleanup_text(license_plate) == cleanup_text(row[0]):
+                time_in = row[2]
+                print("time in: ", time_in)
+                f.close()
+                return time_in
+
+
+def get_total_time(time_in, time_out):
+    pass
+# func: cal total time in - out
+# paramter: time in, time out
+# return values: total time
