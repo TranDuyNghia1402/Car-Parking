@@ -4,7 +4,7 @@ from ultralytics import YOLO
 
 
 # load model
-model_path = 'C:/Users/Tran Duy Nghia/runs/detect/train40/weights/best.pt'
+model_path = 'D:/KLTN/CODE/SOURCE/DETECT_MODEL/ANPR.pt'
 model = YOLO(model_path)
 # threshold
 threshold = 0.5

@@ -138,10 +138,11 @@ def get_time_in(license_plate):
 # return values: time in
 
 
-def get_total_time(time_in, time_out):
-    pass
+def get_total_time(license_plate, time_out):
+    time_in = get_time_in(license_plate)
+    print(time_in)
 # func: cal total time in - out
-# paramter: time in, time out
+# paramter: license plate, time out
 # return values: total time
 
 
