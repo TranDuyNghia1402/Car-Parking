@@ -6,8 +6,8 @@ import imutils
 import csv
 from datetime import datetime
 
-data_path = 'D:/KLTN/DATASAVE/data.csv'
-diary_path = 'D:/KLTN/DATASAVE/diary.csv'
+data_path = '/home/tran-duy-nghia/Desktop/KLTN/CarParking/DATASAVE/data.csv'
+diary_path = '/home/tran-duy-nghia/Desktop/KLTN/CarParking/DATASAVE/diary.csv'
 
 
 def cleanup_text(text):
@@ -69,7 +69,7 @@ def get_current_time():
     return current_time
 # func: get current time
 # parameter: None
-# return values: current time (string) (day/month/year hour:minute)
+# return values: current time (string) (day//month//year hour:minute)
 
 
 def generate_qrcode():
@@ -121,7 +121,7 @@ def check_data_is_correct(license_plate, identifier):
     return False
 # func: check if data gate in == data gate out
 # parameter: license plate, identifier
-# return values: True / False
+# return values: True // False
 
 
 def get_time_in(license_plate):

@@ -3,7 +3,7 @@ import os
 from GATE.ANPR_Support import *
 from GATE.Gate import Gate
 
-path = 'D:/KLTN/IMAGES/TEST_IMG/'
+path = '/home/tran-duy-nghia/Desktop/KLTN/CarParking/IMAGES/TEST_IMG/'
 img_name1 = 'test1.jpg'
 img_name2 = 'test2.jpg'
 img_name3 = 'test3.jpg'
@@ -29,7 +29,7 @@ def gateIn():
     #         # break
     # capture.release()
     # cv.destroyAllWindows()
-    image = cv.imread(os.path.join(path, img_name5))
+    image = cv.imread(os.path.join(path, img_name1))
     gate_in = Gate(image_input=image)
     is_number_plate_in, cap_in_img = gate_in.plate_regconition()
     if is_number_plate_in:
@@ -45,14 +45,14 @@ def gateIn():
 
 
 def gateOut():
-    image = cv.imread(os.path.join(path, img_name2))
+    image = cv.imread(os.path.join(path, img_name5))
     gate_out = Gate(image_input=image)
     is_number_plate_out, cap_out_img = gate_out.plate_regconition()
     if is_number_plate_out:
         license_text_out = cleanup_text(get_license_plate_text(cap_out_img))
         current_time_out = get_current_time()
         if license_text_out is not None:
-            if check_data_is_correct(license_text_out, 'GHo7FvJgLWTm'):
+            if check_data_is_correct(license_text_out, '6ZMS2nV258ZS'):
                 time_in = get_time_in(license_text_out)
                 remove_data(license_text_out)
             else:
@@ -67,4 +67,4 @@ def read_data():
 if __name__ == "__main__":
     gateIn()
     # gateOut()
-    read_data()
+    # read_data()

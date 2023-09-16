@@ -3,7 +3,7 @@ import random
 import string
 import os
 
-dir_path = 'D:/KLTN/IMAGES/QRCODE/'
+dir_path = '/home/tran-duy-nghia/Desktop/KLTN/CarParking/IMAGES/QRCODE'
 
 
 class QRCode:

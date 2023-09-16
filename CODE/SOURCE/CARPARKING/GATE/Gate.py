@@ -4,14 +4,14 @@ from ultralytics import YOLO
 
 
 # load model
-model_path = 'D:/KLTN/CODE/SOURCE/DETECT_MODEL/ANPR.pt'
+model_path = '/home/tran-duy-nghia/Desktop/KLTN/CarParking/CODE/SOURCE/DETECTMODEL/ANPR.pt'
 model = YOLO(model_path)
 # threshold
 threshold = 0.5
 # image name of the frame detected license plate
 img_name = 'license_plate.jpg'
 # path to folder hold the img license plate detected
-img_folder = 'D:/KLTN/IMAGES/STORAGE_IMG'
+img_folder = '/home/tran-duy-nghia/Desktop/KLTN/CarParking/IMAGES/STORAGE_IMG/'
 
 
 class Gate:

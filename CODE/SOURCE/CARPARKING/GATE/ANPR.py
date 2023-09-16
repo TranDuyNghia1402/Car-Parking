@@ -3,8 +3,8 @@ import pytesseract
 import numpy as np
 import imutils
 import cv2
-pytesseract.pytesseract.tesseract_cmd = r'D:/PythonFrameWork/tesseract.exe'
 
+# pytesseract.pytesseract.tesseract_cmd = r'/media/tran-duy-nghia/New Volume/PythonFrameWork/tesseract.exe'
 
 class ANPR:
     def __init__(self, minAR=4, maxAR=5, debug=False) -> None:
